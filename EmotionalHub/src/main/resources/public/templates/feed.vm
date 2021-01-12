@@ -1,0 +1,54 @@
+#set( $title = "Your Feed" )
+#set( $style = "/public/styles/feed.css" )
+
+#parse("/public/templates/top.vm")
+#parse("public/templates/nav.vm")
+
+<div class="content card-columns">
+    #if ($posts)
+    #set($prompt = $promptObj.getTopPrompt())
+
+    <div class="card post form-post-any" id="make-post-any" onclick="expand('make-post-any');">
+        <p class="text-center"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+            ${prompt} Or, choose a prompt.</p>
+        <form action="#" method="post" class="" enctype="multipart/form-data" onsubmit="analyzePostInSeparateRoute(this)">
+            <select class="form-control" name="prompt-idx" onclick="stopBubbling(event)">
+                <option value="-1">$prompt</option>
+                #foreach($p in $promptObj.getPrompts())
+                    #set($promptIdx = $promptObj.getPrompts().indexOf($p))
+                    <option value="${promptIdx}">$p</option>
+                #end
+            </select>
+            <br>
+            <label class="shrunken"> Post anonymously? <input type="checkbox" name="anonymous" value="anon"> </label>
+            <textarea class="form-control" rows="5" name="content" placeholder="Your content here..." onclick="stopBubbling(event)"></textarea>
+            <input type="file" name="media" id="media" accept="image/*,audio/*,video/*" onclick="stopBubbling(event)">
+            <button class="btn-make-post btn-right" name="posted" value="true" onclick="stopBubbling(event)">Post</button>
+        </form>
+    </div>
+
+    #set($pos = 0)
+    #foreach($post in $posts)
+        #if ($pos == 5)
+            #set($pos = 0)
+        #end
+        #if ($pos == 0)
+            #set($posIdx = $promptObj.getRandomPos())
+            #set($promptIdx = $promptObj.getRandomPromptIdx())
+            #set($prompt = $promptObj.getPrompts().get($promptIdx))
+        #end
+
+        #if ($pos == $posIdx)
+            #parse( "/public/templates/post.vm" )
+            #set( $pos = $pos + 1 )
+        #end
+        <!-- Due to some technicalities this doesn't guarantee one posting block per 5 blocks, but it's fine. -->
+
+        #parse( "/public/templates/post-block.vm" )
+
+        #set( $pos = $pos + 1 )
+    #end
+    #end
+</div>
+
+#parse("/public/templates/bottom.vm")
