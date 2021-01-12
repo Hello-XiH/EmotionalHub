@@ -1,0 +1,4 @@
+*.DS_Store
+vad-detection/EmoBank
+vadPredictApp/model/*
+
