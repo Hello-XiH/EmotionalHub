@@ -1,4 +1,4 @@
-This folder contains work of team "unicorns of love" -- Chenyu Zhang, Jinhan Zhang, Shravan Venkatesan, Sophia Xu, Xi He, and Lynn Yin for the fall 2020 OOSE class. 
+This folder contains work of team "unicorns of love" -- Chenyu Zhang, Xi He, Jinhan Zhang, Shravan Venkatesan, Sophia Xu, and Lynn Yin for the fall 2020 OOSE class. 
 
 ## EmotionalHub
 
