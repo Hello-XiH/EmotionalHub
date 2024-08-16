@@ -1,7 +1,5 @@
 This folder contains work of team "unicorns of love" -- Chenyu Zhang, Jinhan Zhang, Shravan Venkatesan, Sophia Xu, Xi He, and Lynn Yin for the fall 2020 OOSE class. 
 
-The `homework` folder contains the course homeworks. The `EmotionalHub` folder contains our main project, and the `docs` folder contains relevant documentation.
-
 ## EmotionalHub
 
 This is the source code for a web application that features an "emotionally conscious" social platform, where users would receive feeds that fit their emotional needs, and they will also be able to make posts themselves.
